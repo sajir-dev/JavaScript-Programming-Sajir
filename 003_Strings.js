@@ -40,7 +40,7 @@ removewhitespace = (str) => {
 };
 
 addcharacter = (str, chadd, ch) => {
-  for (i = 0; i < str.length; i++) {
+  for (let i = 0; i < str.length; i++) {
     if (str.charAt(i) == ch) {
       str = str.slice(0, i + 1) + chadd + str.slice(i + 1, str.length);
     }
