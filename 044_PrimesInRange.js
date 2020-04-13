@@ -3,7 +3,7 @@ primesInRange = (start, end) => {
   let primes = [];
 
   primecheck = (x) => {
-    for (i = 2; i < x; i++) {
+    for (let i = 2; i < x; i++) {
       if (num % i === 0) {
         return false;
       }
