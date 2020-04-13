@@ -1,19 +1,15 @@
-multiplicationtable = (n, index) => {
-    for (let i = 1; i <= index; i++) {
-      console.log(n + "X" + i + "=" + n * i);
+multiplicationtable = () => {
+  let table = "";let ch = '  '
+  for (let i = 1; i <= 10; i++) {
+    for (let j = 1; j <= 10; j++) {
+      if ((i * j).toString.length === 1) {
+        ch = '    ';
+      }
+      table = table + ch + (i * j).toString();
     }
-    return "end";
-  };
-  
-  console.log(multiplicationtable(1, 10));
-  console.log(multiplicationtable(2, 10));
-  console.log(multiplicationtable(3, 10));
-  console.log(multiplicationtable(4, 10));
-  console.log(multiplicationtable(5, 10));
-  console.log(multiplicationtable(6, 10));
-  console.log(multiplicationtable(7, 10));
-  console.log(multiplicationtable(8, 10));
-  console.log(multiplicationtable(9, 10));
-  console.log(multiplicationtable(10, 10));
-  console.log(multiplicationtable(11, 10));
-  console.log(multiplicationtable(12, 10));
+    table = table + "\n";
+  }
+  return table;
+};
+
+console.log(multiplicationtable());
