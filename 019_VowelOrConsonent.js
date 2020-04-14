@@ -11,10 +11,9 @@ vowelOrConsonent = (ch) => {
     ch === "u" ||
     ch === "U"
   ) {
-    console.log("It is a vowel");
+    return ("It is a vowel");
   } else {
-    console.log("It is a consonent");
+    return ("It is a consonent");
   }
-  return 1;
 };
-vowelOrConsonent("b");
+console.log(vowelOrConsonent("b"));
