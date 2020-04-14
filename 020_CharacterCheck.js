@@ -1,4 +1,4 @@
-charactercheck = (ch) => {
+characterCheck = (ch) => {
   if ((ch >= "a" && ch <= "z") || (ch >= "A" && ch <= "Z")) {
     return "The given character is an alphabet";
   } else {
@@ -6,4 +6,4 @@ charactercheck = (ch) => {
   }
 };
 
-console.log(charactercheck("5"));
+console.log(characterCheck("5"));
