@@ -12,18 +12,17 @@ reverseconcat = (str1, str2) => {
   return reversestring(stringconcat(str1, str2));
 };
 
-
-stringmix = (str1, str2)=>{
-	let mixstring = ""
-	for (let i = 0; i<(str1+str2).length; i++){
-		if (i%2 == 0){
-			mixstring = mixstring+str1.charAt(i/2)
-		}else{
-			mixstring = mixstring+str2.charAt(i/2-.5)
-		}
-	}
-	return mixstring
-}
+stringmix = (str1, str2) => {
+  let mixstring = "";
+  for (let i = 0; i < (str1 + str2).length; i++) {
+    if (i % 2 == 0) {
+      mixstring = mixstring + str1.charAt(i / 2);
+    } else {
+      mixstring = mixstring + str2.charAt(i / 2 - 0.5);
+    }
+  }
+  return mixstring;
+};
 
 splithalf = (str) => {
   return [str.slice(0, str.length / 2), str.slice(str.length / 2, str.length)];
@@ -60,4 +59,4 @@ console.log(reversestring("abcdef"));
 
 console.log(reverseconcat("abcde", "fghij"));
 
-console.log (stringmix("abc","def"))
+console.log(stringmix("abc", "def"));
