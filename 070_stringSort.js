@@ -1,8 +1,8 @@
 const stringSort = (string) => {
   let arr = string.split("");
   let temp = "";
-  for (i = 0; i < arr.length; i++) {
-    for (j = i + 1; j < arr.length; j++) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
       if (arr[i] > arr[j]) {
         temp = arr[i];
         arr[i] = arr[j];
@@ -13,4 +13,4 @@ const stringSort = (string) => {
   return arr.join("");
 };
 
-console.log(stringSort("face"));
+console.log(stringSort("abracadabra"));
