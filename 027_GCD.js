@@ -1,5 +1,12 @@
-areaofcircle = (radius) => {
-  return 3.14 * radius * radius;
+gcd = (a, b) => {
+  let gcd = 1;
+  let limit = a < b ? a : b;
+  for (let i = 1; i <= limit; i++) {
+    if (a % i === 0 && b % i === 0) {
+      gcd = i;
+    }
+  }
+  return gcd;
 };
 
-console.log(areaofcircle(10));
+console.log(gcd(32, 128));
