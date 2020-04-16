@@ -1,5 +1,5 @@
 numbersWithNineDivisors = (n) => {
-  let nineDivisor = [];
+  let NineDivisor = [];
   for (let i = 1; i <= n; i++) {
     let count = 0;
     for (let j = 1; j <= i; j++) {
@@ -8,10 +8,10 @@ numbersWithNineDivisors = (n) => {
       }
     }
     if (count === 9) {
-      nineDivisor.push(i);
+      NineDivisor.push(i);
     }
   }
-  return nineDivisor;
+  return NineDivisor;
 };
 
 console.log(numbersWithNineDivisors(333));
