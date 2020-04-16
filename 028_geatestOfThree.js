@@ -1,5 +1,5 @@
 greatestofthree = (a, b, c) => {
-  let greatest = a;
+  let greatest;
   if (a > b && a > c) {
     greatest = a;
   } else if (b > a && b > c) {
