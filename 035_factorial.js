@@ -1,12 +1,9 @@
-reverse = (num) => {
-  let rev = 0;
-  let rem;
-  let number = num;
-  while (number > 0) {
-    rev = rev * 10 + (number % 10);
-    number = parseInt(number / 10);
+factorial = (num) => {
+  let fact = 1;
+  for (let i = 1; i <= num; i++) {
+    fact = fact * i;
   }
-  return rev;
+  return fact;
 };
 
-console.log(reverse(123));
+console.log(factorial(5));
