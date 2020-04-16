@@ -1,7 +1,7 @@
 stringconcat = (str1, str2) => str1 + " " + str2;
 
 reversestring = (str) => {
-  rev = "";
+  let rev = "";
   for (let i = str.length - 1; i >= 0; i--) {
     rev = rev + str.charAt(i);
   }
