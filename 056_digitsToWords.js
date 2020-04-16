@@ -13,15 +13,17 @@ digitsWords = (num) => {
   };
 
   numString = "";
+  
+  let loopLength = num.toString().length;
 
-  for (let i = 0; i < num.toString().length; i++) {
+  for (let i = 0; i < loopLength; i++) {
     numString = numString + ' ' + numWord[num.toString()[i]];
   }
   return numString;
 };
 
 
-console.log (digitsWords(2259))
+console.log (digitsWords(2259));
 
 //   let numWord = {
 //     "0": "Zero",
