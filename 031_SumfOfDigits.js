@@ -1,5 +1,10 @@
-numberOfDigits = (a) => {
+sumOfDigits = (a) => {
   let number = a.toString();
-  return number.length;
+  let sum = 0;
+  for (let i = 0; i < number.length; i++) {
+    sum = sum + parseInt(number[i]);
+  }
+  return sum;
 };
-console.log(numberOfDigits(100000000000000000));
+
+console.log(sumOfDigits(12345));
