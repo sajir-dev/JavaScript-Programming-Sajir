@@ -1,4 +1,4 @@
-checkcharacter = (ch) => {
+checkCharacter = (ch) => {
   switch (true) {
     case "A" <= ch && ch <= "Z":
       return "Given character is an uppercase letter";
