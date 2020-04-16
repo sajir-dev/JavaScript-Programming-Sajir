@@ -10,6 +10,7 @@ armstrongInRange = (start, end) => {
       cubesum = cubesum + Math.pow(runner % 10, 3);
       runner = parseInt(runner / 10);
     }
+    
     if (cubesum === x) {
       return true;
     } else {
