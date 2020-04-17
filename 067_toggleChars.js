@@ -1,12 +1,13 @@
 const toggleChars = (string) => {
-  for (let i = 0; i < string.length; i++) {
-    if (string[i] <= "z" && string[i] >= "a") {
-      string=string.substring(0, i)+string[i].toUpperCase()+string.substring(i+1, string.length)                       //push(string[i].toUpperCase());
+  let toggledString = string.split("");
+  for (let i = 0; i < toggledString.length; i++) {
+    if (toggledString[i] >= "a" && toggledString[i] <= "z") {
+      toggledString[i] = toggledString[i].toUpperCase();
     } else {
-        string=string.substring(0, i)+string[i].toLowerCase()+string.substring(i+1, string.length)
+      toggledString[i] = toggledString[i].toLowerCase();
     }
   }
-  return string;
+  return toggledString.join("");
 };
 
-console.log(toggleChars("UndaPori"));
+console.log(toggleChars("hallelujah!"));
