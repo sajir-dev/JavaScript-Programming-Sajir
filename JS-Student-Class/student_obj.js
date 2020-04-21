@@ -1,53 +1,4 @@
-let classObj = {
-    "name" : "class A" ,
-    "teacherName" : "Mary" ,
-    "students" : [ 
-        {
-            "name" : "Ravi" ,
-            "id" : "101" ,
-            "marks" : [
-                {"subject" : "English" , "mark" : 25}, 
-                {"subject" : "Maths", "mark" : 48}, 
-                {"subject" : "Physics", "mark" : 40}, 
-                {"subject" : "Chemistry", "mark" : 30},
-                {"subject" : "Computer", "mark" : 20}
-            ]
-        },
-        {
-            "name" : "Aju" ,
-            "id" :  "102",
-            "marks" : [
-                {"subject" : "English" , "mark" : 35}, 
-                {"subject" : "Maths", "mark" : 38}, 
-                {"subject" : "Physics", "mark" : 33}, 
-                {"subject" : "Chemistry", "mark" : 34},
-                {"subject" : "Computer", "mark" : 30}
-            ]
-        },
-        {
-            "name" : "Mini" ,
-            "id" : "103" ,
-            "marks" : [
-                {"subject" : "English" , "mark" : 12}, 
-                {"subject" : "Maths", "mark" : 49}, 
-                {"subject" : "Physics", "mark" : 18}, 
-                {"subject" : "Chemistry", "mark" : 30},
-                {"subject" : "Computer", "mark" : 40}
-            ]
-        },
-        {
-            "name" : "Binu" ,
-            "id" : "104" ,
-            "marks" : [
-                {"subject" : "English" , "mark" : 49}, 
-                {"subject" : "Maths", "mark" : 49}, 
-                {"subject" : "Physics", "mark" : 47}, 
-                {"subject" : "Chemistry", "mark" : 46},
-                {"subject" : "Computer", "mark" : 50}
-            ]
-        }
-    ]
-}
+let classObj = {}
 
 
 changeTeacher = (newTeacher) => { // function to change teacher of the class
@@ -57,32 +8,19 @@ changeTeacher = (newTeacher) => { // function to change teacher of the class
 //console.log(changeTeacher("Bindu"))
 
 
-let sampleStudent = { // Sample student for testing functionalities
-    "name": "nijesh",
-    "id": "110" ,
-    "marks": [
-        {"subject": "English", "mark": 20},
-        {"subject": "Maths", "mark": 40},
-        {"subject" : "Physics", "mark" : 38}, 
-        {"subject" : "Chemistry", "mark" : 46},
-        {"subject" : "Computer", "mark" : 40}
-     ]
-}
-
-
-createStudent = (studentObj) => { //Creating student from a Student
+createStudentFromObj = (studentObj) => { //Creating student from a Student    
     classObj.students.push(studentObj)
     return (studentObj.name + " with ID " + studentObj.id + "has generated")
 }
-//createStudent(sampleStudent)
+//createStudentFromObj(sampleStudent)
 
 
-createStudent = (idnum, name) => { //Creating student from idnum and name
+createStudentFromIdAndName = (idnum, name) => { //Creating student from idnum and name
     let student = {"id" : idnum, "name" : name}
     classObj.students.push(student)
     return (console.log ("inside createStudent"))
 }
-//createStudent (108, "Amal")
+//createStudentFromIdAndName (108, "Amal")
 
 studentFinder = (idnum) => { // this function will return student with ID idnum
     for (let i = 0; i< classObj.students.length; i++){
@@ -93,14 +31,6 @@ studentFinder = (idnum) => { // this function will return student with ID idnum
     return console.log("Could not find the student")
 }
 
-
-//SampleMarkData for testing adding the marks of a student
-let SampleMarkData = [ 
-    {"subject" : "English" , "mark" : 20}, 
-    {"subject" : "Maths", "mark" : 40}, 
-    {"subject" : "Physics", "mark" : 48}, 
-    {"subject" : "Chemistry", "mark" : 38}]
-
 addMarks = (idnum, markData) => { //function for adding marks
     let student = studentFinder(idnum)
     student.marks = markData
@@ -109,10 +39,7 @@ addMarks = (idnum, markData) => { //function for adding marks
 //addMarks (110, SampleMarkData)
 
 
-let SampleMarkForSubject = [{"id" : "103", "mark" : 11}, {"id" : "104", "mark" : 11}] 
-//Sample data of marks obtained by each id for a particular subject
-
-addMarksForSubject = (markForSubject, subject) => { //marks obtained by each id for a particular subject adding to corresponding id
+addMarksForSubject = (subject, markForSubject) => { //marks obtained by each id for a particular subject adding to corresponding id
     for (let i=0 ; i<markForSubject.length; i++){
         for (let j=0; j<classObj.students.length; j++){
             if (classObj.students[j].id === markForSubject[i].id){
@@ -222,6 +149,16 @@ getAvg = (sub) => { //get average marks for a given subject
 }
 //console.log(getAvg("Computer"))
 
+getAverageMarksOf = ( sub ) => {
+    let subjectIndexArray ={ 'English' : 0 , 'Maths' : 1, 'Physics' : 2, 'Chemistry': 3, 'Computer': 4}
+    let subjectIndex = subjectIndexArray[sub]
+    let markSumOfAll = 0
+    for (let i = 0; i< classObj.students.length; i++){
+        markSumOfAll = markSumOfAll + parseInt(classObj.students[i].marks[subjectIndex].mark)
+    }
+    return markSumOfAll/classObj.students.length
+}
+
 
 sortOnName = () => {  // sort the list based on name
     for (let i = 0; i< classObj.students.length-1; i++){
@@ -233,7 +170,7 @@ sortOnName = () => {  // sort the list based on name
             }
         }
     }
-    return JSON.stringify(classObj.students, null , 2)
+    return classObj.students
 }
 //console.log (sortOnName())
 
@@ -261,7 +198,7 @@ sortOnMarks = (sub) => {  // sort the list based on marks for a given subject
             }
         }
     }
-    return JSON.stringify(classObj.students, null, 2)
+    return classObj.students
 }
 //console.log (sortOnMarks("Maths"))
 
@@ -274,6 +211,21 @@ totalMarkOfStudent = ( idnum ) => { //total mark of a given id
     }
     return markSum
 }
+
+module.exports = { classObj : classObj, 
+    changeTeacher: changeTeacher, 
+    createStudentFromObj : createStudentFromObj, 
+    addMarks: addMarks, 
+    addMarksForSubject: addMarksForSubject, 
+    editMarks: editMarks, 
+    removeStudent: removeStudent, 
+    deleteSubject: deleteSubject, 
+    getTopper: getTopper, 
+    getAverageMarksOf : getAverageMarksOf,
+    sortOnName:sortOnName, 
+    sortOnMarks: sortOnMarks,
+    totalMarkOfStudent: totalMarkOfStudent }
+
 
 //console.log(changeTeacher("Bindu"))
 
