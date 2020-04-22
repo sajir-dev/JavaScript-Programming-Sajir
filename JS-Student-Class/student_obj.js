@@ -1,5 +1,68 @@
 let classObj = {}
 
+let readlineSync = require('readline-sync')
+
+createClass = () => {
+    let className = readlineSync.question("Enter the Class name (Eg: Class A): ")
+    let teacherName = readlineSync.question("Enter teacher name of "+ className+ ": ")
+    let noOfStudents = readlineSync.question("Enter how many students are in "+ className+ ": ")
+
+    classObj.className = className
+    classObj.teacherName = teacherName
+    classObj.students = []
+
+    for ( i = 0; i < noOfStudents; i++ ){
+        enterStudentInfo();
+    }
+}
+
+enterStudentInfo = () => {
+    let studentName = readlineSync.question("Enter the name of Student: ")
+    let studentId = readlineSync.question("Enter the ID of " + studentName + " : ")
+    let student = {
+        "name" : studentName ,
+        "id" : studentId ,
+        "marks" : enterMarkInfoOfStudent(studentId, studentName)
+    }
+    createStudentFromObj (student)
+}
+
+enterMarkInfoOfStudent = (idnum, studentName ) => {
+    let markEnglish = readlineSync.question("Enter the marks in English: ")
+    let markMaths = readlineSync.question("Enter the marks in Maths: ")
+    let markPhysics = readlineSync.question("Enter the marks in Physics: ")
+    let markChemistry = readlineSync.question("Enter the mark in Chemistry: ")
+    let markComputer = readlineSync.question("Enter the mark of in Computer: ")
+    return  [
+        {"subject" : "English" , "mark" : markEnglish}, 
+        {"subject" : "Maths", "mark" : markMaths}, 
+        {"subject" : "Physics", "mark" : markPhysics}, 
+        {"subject" : "Chemistry", "mark" : markChemistry},
+        {"subject" : "Computer", "mark" : markComputer}
+    ]
+}
+
+displayClass = () => {
+    let text = "\n" + classObj.className + "\n" + "Teacher in-charge: "+ classObj.teacherName+"\n"
+    for (let i = 0; i<classObj.students.length; i++){
+        text = text.concat("\nStudent Name: " + classObj.students[i].name+ "\nStudent ID: "+ classObj.students[i].id+"\n")
+        for (let k = 0; k<classObj.students[i].marks.length; k++){
+            text = text.concat( classObj.students[i].marks[k].subject + " : " + classObj.students[i].marks[k].mark+"\n" ) 
+        }
+    }
+    return text
+}
+
+displayMarksAndStudents = (classObj) => {
+    let text = "\n"
+    for (let i = 0; i<classObj.students.length; i++){
+        text = text.concat("\nStudent Name: " + classObj.students[i].name+ "\nStudent ID: "+ classObj.students[i].id+"\n")
+        for (let k = 0; k<classObj.students[i].marks.length; k++){
+            text = text.concat( classObj.students[i].marks[k].subject + " : " + classObj.students[i].marks[k].mark+"\n" ) 
+        }
+    }
+    return text
+}
 
 changeTeacher = (newTeacher) => { // function to change teacher of the class
     classObj.teacherName = newTeacher
@@ -29,6 +92,19 @@ studentFinder = (idnum) => { // this function will return student with ID idnum
         }
     }
     return console.log("Could not find the student")
+}
+
+enterMarkInfoOfSubject = () => {
+    const newMarksAndIDsArray = []
+    let next
+    do {
+        let studentID = readlineSync.question("Enter ID of the student: ")
+        let IDsNewMark = readlineSync.question("Enter the mark obtained by "+ studentID + ": ")
+        let newMarksAndID = {"id" : studentID, "mark" : parseInt(IDsNewMark)}
+        newMarksAndIDsArray.push(newMarksAndID)
+        next = readlineSync.question("Press 1 to enter next student detail, press 0 if finished: ")
+    } while (next.toString(2)==1)
+    return newMarksAndIDsArray
 }
 
 addMarks = (idnum, markData) => { //function for adding marks
@@ -96,24 +172,23 @@ deleteSubject = (subject) => {
 //deleteSubject("Maths")
 
 
-getTopper = (sub) => { //get the topper of a given subject 
-    let index = 0 
-    let subjectIndex = 0
-    
-    for (let k = 0; k <classObj.students[0].marks.length; k++){
-        if (classObj.students[0].marks[k].subject === sub){
-            subjectIndex = k
+subjectIndexFinder = ( sub, studentIndex) => {
+    for (let k = 0; k <classObj.students[studentIndex].marks.length; k++){
+        if (classObj.students[studentIndex].marks[k].subject === sub){
+            return k
         }
     }
+    return console.log (" No matching records for student: " + classObj.students[studentIndex].id)
+}
 
+
+getTopper = (sub) => { //get the topper of a given subject 
+    let index = 0 
+    let subjectIndex = subjectIndexFinder( sub, 0)
     let topperMark = classObj.students[0].marks[subjectIndex].mark
 
     for (let i = 1; i < classObj.students.length; i++) {
-        for (let k = 0; k <classObj.students[i].marks.length; k++){
-            if (classObj.students[0].marks[k].subject === sub){
-                subjectIndex = k
-            }
-        }
+        subjectIndex = subjectIndexFinder( sub, i)
         if (classObj.students[i].marks[subjectIndex].mark > topperMark){
             topperMark = classObj.students[i].marks[subjectIndex].mark
             index = i
@@ -124,39 +199,38 @@ getTopper = (sub) => { //get the topper of a given subject
 //console.log(getTopper( "English"))
 
 
-getAvg = (sub) => { //get average marks for a given subject
+// getAvg = (sub) => { //get average marks for a given subject
+//     let subjectSum = 0
+//     let subjectIndex = subjectIndexFinder ( sub, 0)
+//     subjectSum = classObj.students[0].marks[subjectIndex].mark
+
+//     for (let i = 1; i < classObj.students.length; i++) {
+//         subjectIndex = subjectIndexFinder ( sub, i)
+//         subjectSum = subjectSum +  parseInt(classObj.students[i].marks[subjectIndex].mark)
+//     }
+//     return subjectSum/classObj.students.length
+// }
+//console.log(getAvg("Computer"))
+
+
+getAverageMarksOf = ( sub ) => {
     let subjectSum = 0
-    let subjectIndex = 0
-
-    for (let k = 0; k <classObj.students[0].marks.length; k++){
-        if (classObj.students[0].marks[k].subject === sub){
-            subjectIndex = k
-        }
-    }
-
+    let subjectIndex = subjectIndexFinder ( sub, 0)
     subjectSum = classObj.students[0].marks[subjectIndex].mark
 
     for (let i = 1; i < classObj.students.length; i++) {
-        for (let k = 0; k <classObj.students[i].marks.length; k++){
-            if (classObj.students[0].marks[k].subject === sub){
-                subjectIndex = k
-            }
-        }
-        subjectSum = subjectSum +  classObj.students[i].marks[subjectIndex].mark
+        subjectIndex = subjectIndexFinder ( sub, i)
+        subjectSum = subjectSum +  parseInt(classObj.students[i].marks[subjectIndex].mark)
     }
-
     return subjectSum/classObj.students.length
-}
-//console.log(getAvg("Computer"))
 
-getAverageMarksOf = ( sub ) => {
-    let subjectIndexArray ={ 'English' : 0 , 'Maths' : 1, 'Physics' : 2, 'Chemistry': 3, 'Computer': 4}
-    let subjectIndex = subjectIndexArray[sub]
-    let markSumOfAll = 0
-    for (let i = 0; i< classObj.students.length; i++){
-        markSumOfAll = markSumOfAll + parseInt(classObj.students[i].marks[subjectIndex].mark)
-    }
-    return markSumOfAll/classObj.students.length
+    // let subjectIndexArray ={ 'English' : 0 , 'Maths' : 1, 'Physics' : 2, 'Chemistry': 3, 'Computer': 4}
+    // let subjectIndex = subjectIndexArray[sub]
+    // let markSumOfAll = 0
+    // for (let i = 0; i< classObj.students.length; i++){
+    //     markSumOfAll = markSumOfAll + parseInt(classObj.students[i].marks[subjectIndex].mark)
+    // }
+    // return markSumOfAll/classObj.students.length
 }
 
 
@@ -170,7 +244,7 @@ sortOnName = () => {  // sort the list based on name
             }
         }
     }
-    return classObj.students
+    return classObj
 }
 //console.log (sortOnName())
 
@@ -180,17 +254,9 @@ sortOnMarks = (sub) => {  // sort the list based on marks for a given subject
     let subjectIndex2
 
     for (let i = 0; i< classObj.students.length-1; i++){
-        for (let ik = 0; ik <classObj.students[i].marks.length; ik++){
-            if (classObj.students[i].marks[ik].subject === sub){
-                subjectIndex1 = ik
-            }
-        }   
+        subjectIndex1 = subjectIndexFinder ( sub, i)
         for ( let j = i; j< classObj.students.length; j++){
-            for (let jk = 0; jk <classObj.students[j].marks.length; jk++){
-                if (classObj.students[j].marks[jk].subject === sub){
-                    subjectIndex2 = jk
-                }
-            }
+            subjectIndex2 = subjectIndexFinder ( sub, j)
             if (classObj.students[i].marks[subjectIndex1].mark < classObj.students[j].marks[subjectIndex2].mark){
                 let temp = classObj.students[i]
                 classObj.students[i] = classObj.students[j]
@@ -198,7 +264,7 @@ sortOnMarks = (sub) => {  // sort the list based on marks for a given subject
             }
         }
     }
-    return classObj.students
+    return classObj
 }
 //console.log (sortOnMarks("Maths"))
 
@@ -213,8 +279,12 @@ totalMarkOfStudent = ( idnum ) => { //total mark of a given id
 }
 
 module.exports = { classObj : classObj, 
-    changeTeacher: changeTeacher, 
+    createClass : createClass,
+    changeTeacher : changeTeacher, 
     createStudentFromObj : createStudentFromObj, 
+    displayClass : displayClass,
+    enterMarkInfoOfStudent: enterMarkInfoOfStudent,
+    enterMarkInfoOfSubject: enterMarkInfoOfSubject,
     addMarks: addMarks, 
     addMarksForSubject: addMarksForSubject, 
     editMarks: editMarks, 
@@ -224,6 +294,7 @@ module.exports = { classObj : classObj,
     getAverageMarksOf : getAverageMarksOf,
     sortOnName:sortOnName, 
     sortOnMarks: sortOnMarks,
+    displayMarksAndStudents: displayMarksAndStudents,
     totalMarkOfStudent: totalMarkOfStudent }
 
 
