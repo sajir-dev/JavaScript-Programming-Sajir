@@ -44,21 +44,30 @@ enterMarkInfoOfStudent = (idnum, studentName ) => {
 
 displayClass = () => {
     let text = "\n" + classObj.className + "\n" + "Teacher in-charge: "+ classObj.teacherName+"\n"
+    text = text.concat("\t\t\t")
+    for (let k = 0; k<classObj.students[0].marks.length; k++){
+        let ch = " ".repeat(16-classObj.students[0].marks[k].subject.length)
+        text = text.concat (classObj.students[0].marks[k].subject+ch)
+    }
     for (let i = 0; i<classObj.students.length; i++){
-        text = text.concat("\nStudent Name: " + classObj.students[i].name+ "\nStudent ID: "+ classObj.students[i].id+"\n")
+        text = text.concat("\n"+ classObj.students[i].name + "("+ classObj.students[i].id + ")" );
         for (let k = 0; k<classObj.students[i].marks.length; k++){
-            text = text.concat( classObj.students[i].marks[k].subject + " : " + classObj.students[i].marks[k].mark+"\n" ) 
+            text =text.concat( "\t\t", classObj.students[i].marks[k].mark)
         }
     }
     return text
 }
 
 displayMarksAndStudents = (classObj) => {
-    let text = "\n"
+    let text = "\n\t\t\t"
+    for (let k = 0; k<classObj.students[0].marks.length; k++){
+        let ch = " ".repeat(16-classObj.students[0].marks[k].subject.length)
+        text = text.concat (classObj.students[0].marks[k].subject+ch)
+    }
     for (let i = 0; i<classObj.students.length; i++){
-        text = text.concat("\nStudent Name: " + classObj.students[i].name+ "\nStudent ID: "+ classObj.students[i].id+"\n")
+        text = text.concat("\n"+ classObj.students[i].name + "("+ classObj.students[i].id + ")" );
         for (let k = 0; k<classObj.students[i].marks.length; k++){
-            text = text.concat( classObj.students[i].marks[k].subject + " : " + classObj.students[i].marks[k].mark+"\n" ) 
+            text =text.concat( "\t\t", classObj.students[i].marks[k].mark)
         }
     }
     return text
@@ -198,6 +207,43 @@ getTopper = (sub) => { //get the topper of a given subject
 }
 //console.log(getTopper( "English"))
 
+hashMapOfClassObj = () => {
+    let arrayMap = []
+
+    for (let i = 0; i< classObj.students.length; i++){
+        let map = new Map()
+        map.set ("name", classObj.students[i].name)
+        map.set ("ID", classObj.students[i].id)
+        for (let k =0; k<classObj.students[i].marks.length; k++) {
+            map.set (classObj.students[i].marks[k].subject, classObj.students[i].marks[k].mark)
+        }
+        arrayMap.push(map)
+    }
+    return arrayMap
+}
+
+
+getAverageInSubject = (subject) => {
+    let arrayMap = hashMapOfClassObj()
+    let sum = 0
+    for (let i = 0; i<arrayMap.length; i++){
+        sum = sum + parseInt(arrayMap[i].get(subject))
+    }
+    return sum/arrayMap.length
+}
+
+getTopperOfSubject = (subject) => {
+    let arrayMap = hashMapOfClassObj()
+    let topmark = arrayMap[0].get(subject)
+    let topper = arrayMap[0].get("name")
+    for (let i=0; i<arrayMap.length; i++){
+        if (arrayMap[i].get(subject) > topmark){
+            topmark = arrayMap[i].get(subject)
+            topper = arrayMap[i].get("name")
+        }
+    }
+    return [topper, topmark]
+}
 
 // getAvg = (sub) => { //get average marks for a given subject
 //     let subjectSum = 0
@@ -292,6 +338,8 @@ module.exports = { classObj : classObj,
     deleteSubject: deleteSubject, 
     getTopper: getTopper, 
     getAverageMarksOf : getAverageMarksOf,
+    getAverageInSubject: getAverageInSubject,
+    getTopperOfSubject: getTopperOfSubject,
     sortOnName:sortOnName, 
     sortOnMarks: sortOnMarks,
     displayMarksAndStudents: displayMarksAndStudents,

@@ -57,12 +57,12 @@ while (true) {
 
         case 8:
             let topperOfSubject = readlineSync.question("Enter subject name to see the topper of the subject( eg: English) : ")
-            console.log(studentFunctions.getTopper(topperOfSubject))
+            console.log(studentFunctions.getTopperOfSubject(topperOfSubject))
             break;
 
         case 9:
             let avgOfSubject =  readlineSync.question ("Enter subject to check the average marks obtained by students in that subject: ")
-            console.log(studentFunctions.getAverageMarksOf (avgOfSubject))
+            console.log(studentFunctions.getAverageInSubject (avgOfSubject))
             break;
 
         case 10:

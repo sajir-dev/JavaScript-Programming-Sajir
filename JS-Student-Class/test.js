@@ -25,7 +25,7 @@ let classObj = {
             ]
         },
         {
-            "name" : "Mini" ,
+            "name" : "Mini SS" ,
             "id" : "103" ,
             "marks" : [
                 {"subject" : "English" , "mark" : 12}, 
@@ -49,44 +49,77 @@ let classObj = {
     ]
 }
 
-let sampleStudent = { // Sample student for testing functionalities
-    "name": "nijesh",
-    "id": "110" ,
-    "marks": [
-        {"subject": "English", "mark": 20},
-        {"subject": "Maths", "mark": 40},
-        {"subject" : "Physics", "mark" : 38}, 
-        {"subject" : "Chemistry", "mark" : 46},
-        {"subject" : "Computer", "mark" : 40}
-     ]
-}
+// let map = new Map()
 
-//SampleMarkData for testing adding the marks of a student
-let sampleMarkData = [ 
-    {"subject" : "English" , "mark" : 20}, 
-    {"subject" : "Maths", "mark" : 40}, 
-    {"subject" : "Physics", "mark" : 48}, 
-    {"subject" : "Chemistry", "mark" : 38}]
+// for (let k =0; k<classObj.students[0].marks.length; k++) {
+//     map.set (classObj.students[0].marks[k].subject, classObj.students[0].marks[k].mark)
+// }
+
+// console.log(map)
 
 
-let sampleMarkForSubject = [{"id" : "103", "mark" : 11}, {"id" : "104", "mark" : 11}] 
-//Sample data of marks obtained by each id for a particular subject
+//console.log(map.get('Maths'))
 
-getAverageMarksOf = ( sub ) => {
-    let subjectIndexArray ={ 'English' : 0 , 'Maths' : 1, 'Physics' : 2, 'Chemistry': 3, 'Computer': 4}
-    let subjectIndex = subjectIndexArray[sub]
-    let markSumOfAll = 0
+hashMapOfClassObj = () => {
+    let arrayMap = []
     for (let i = 0; i< classObj.students.length; i++){
-        markSumOfAll = markSumOfAll + classObj.students[i].marks[subjectIndex].mark
-        
+        let map = new Map()
+        map.set ("name", classObj.students[i].name)
+        map.set ("ID", classObj.students[i].id)
+        for (let k =0; k<classObj.students[i].marks.length; k++) {
+            map.set (classObj.students[i].marks[k].subject, classObj.students[i].marks[k].mark)
+        }
+        arrayMap.push(map)
     }
-    return markSumOfAll/classObj.students.length
+    return arrayMap
+}
+
+//console.log(arrayMap)
+
+getAverageInSubject = (subject) => {
+    let arrayMap = hashMapOfClassObj()
+    let sum = 0
+    for (let i = 0; i<arrayMap.length; i++){
+        sum = sum + arrayMap[i].get(subject)
+    }
+    return sum/arrayMap.length
+}
+
+console.log(getAverageInSubject('English'))
+
+getTopperOfSubject = (subject) => {
+    let arrayMap = hashMapOfClassObj()
+    let topmark = arrayMap[0].get(subject)
+    let topper = arrayMap[0].get('name')
+    for (let i=0; i<arrayMap.length; i++){
+        if (arrayMap[i].get(subject)>topmark){
+            topmark = arrayMap[i].get(subject)
+            topper = arrayMap[i].get('name')
+        }
+    }
+    return [topper, topmark]
+}
+
+//console.log(arrayMap[0].get('English'))
+
+//console.log(getTopperOfSubject('Maths'))
+
+
+displayMarksAndStudents = (classObj) => {
+    let text = "\n\t\t\t"
+    for (let k = 0; k<classObj.students[0].marks.length; k++){
+        let ch = " ".repeat(16-classObj.students[0].marks[k].subject.length)
+        text = text.concat (classObj.students[0].marks[k].subject+ch)
+    }
+    for (let i = 0; i<classObj.students.length; i++){
+        let ch = " ".repeat(20-classObj.students[i].name.length)
+        text = text.concat("\n"+ classObj.students[i].name + "("+ classObj.students[i].id + ")" );
+        for (let k = 0; k<classObj.students[i].marks.length; k++){
+            text =text.concat( "\t\t", classObj.students[i].marks[k].mark)
+        }
+    }
+    return text
 }
 
 
-console.log(getAverageMarksOf('Computer'))
-
-// console.log(classObj.students[0].marks[4].mark)
-// console.log(classObj.students[1].marks[4].mark)
-// console.log(classObj.students[2].marks[4].mark)
-// console.log(classObj.students[3].marks[4].mark)
+//console.log(displayMarksAndStudents(classObj))
