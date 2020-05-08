@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node -r dotenv/config ./bin/www",
-    "dev": "nodemon -r dotenv/config ./bin/www",
-    "precommit": "pretty-quick --staged"
+    "dev": "nodemon -r dotenv/config ./bin/www"
   },
   "dependencies": {
     "bluebird": "^3.7.2",
@@ -33,5 +32,10 @@
     "@utils": "./utils",
     "@models": "./models",
     "@configs": "./configs"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   }
 }
