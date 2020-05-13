@@ -7,7 +7,7 @@ let Student = Schema({
   name: { type: String, required: true },
   rollNo: { type: String, required: true },
   division: { type: Schema.ObjectId },
-  marks: [{ type: Schema.ObjectId }]
+  marks: [{ subject: String, score: String }]
 });
 
 Student = mongoose.model("students", Student);
@@ -50,22 +50,38 @@ const updateStudent = async (id, payload) => {
     let division = await Division.getADivision(payload.division._id);
     student.division = division;
   }
-  console.log(payload.marks);
+  //console.log(student.division);
   if (payload.marks) {
+    payload.marks.forEach(element => {
+      student.marks.push(element);
+      //console.log(student.marks)
+    });
+
+    // if (student.marks){
+    //   payload.marks.forEach(element => {
+    //     student.marks.push(element)
+    //   });
+    // } else {
+    //   student.marks = payload.marks
+    // }
+
     //JSON.stringify(payload.marks);
     // // Write the logic if the given subject and score already inserted or not
-    payload.marks.forEach(element => {
-      let markobj = Marks.createMark(element);
-      student.marks.push(markobj);
-      console.log(markobj);
-    });
+    // payload.marks.forEach(element => {
+    //   async () => {
+    //     console.log('inside async')
+    //     var markobj = await Marks.createMark(element);
+    //     student.marks.push(markobj);
+    //   }
+    //console.log(markobj);
+    // });
     // for (let i = 0; i < payload.marks.length; i++){
     // let hex = /[0-9A-Fa-f]{6}/g;
     // payload.marks[i] = (hex.test(payload.marks[i]))? ObjectId(payload.marks[i]) : payload.marks[i];
     // student.marks.push(payload.marks[i])
   }
   // console.log(payload.marks[0]);
-  // console.log(student.marks[0]);
+  console.log(student);
   return student;
 };
 
