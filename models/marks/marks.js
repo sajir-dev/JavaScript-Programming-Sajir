@@ -6,30 +6,36 @@ let Marks = Schema({
   score: { type: String }
 });
 
-Marks = mongoose.model("mark", Mark, "marks");
+Marks = mongoose.model("mark", Marks, "marks");
 
-const createMark = payload => {
+const createMark = async payload => {
   let mark = new Marks({ subject: payload.subject, score: payload.score });
-  return mark.save();
+  mark = await mark.save();
+  return mark._id;
 };
 
-const updateMark = payload => {
-  let mark = { subject: payload.subject, mark: payload.mark };
-  mark = new Mark(mark);
-  return mark.save();
+const getMarkInASubject = async () => {
+  return await Marks.find();
+};
+
+const updateMark = async payload => {
+  // let mark = { subject: payload.subject, mark: payload.mark };
+  // mark = new Mark(mark);
+  // return mark.save();
 };
 
 const deleteMark = payload => {
-  if (mark.objects.id === payload.objects.id) {
-    delete mark.object;
-    return true;
-  }
-  return console.error(error, "error");
+  // if (mark.objects.id === payload.objects.id) {
+  //   delete mark.object;
+  //   return true;
+  // }
+  // return console.error(error, "error");
 };
 
 module.exports = {
   objects: Marks,
   createMark,
+  getMarkInASubject,
   updateMark,
   deleteMark
 };

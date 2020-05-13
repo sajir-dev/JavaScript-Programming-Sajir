@@ -8,37 +8,59 @@ let Division = Schema({
 
 Division = mongoose.model("divisions", Division);
 
-const createDivision = payload => {
+const createDivision = async payload => {
   let division = {
     name: payload.name,
     teacherName: payload.teacherName
   };
   division = new Division(division);
-  return division.save();
+  division = await division.save();
+  return division;
 };
 
-const getDivision = () => {
-  return division.objects;
+const getDivisions = async () => {
+  return await Division.find();
 };
 
-const updateDivision = payload => {
-  if (payload.id === objects.division.id) {
-    objects.name = payload.name;
-    objects.teacherName = payload.teacherName;
+const getADivision = async id => {
+  return await Division.findOne(id);
+};
+
+const getTeacherName = async div => {
+  return await div.teacherName;
+};
+
+const updateDivision = async (div, payload) => {
+  let division = await Division.findOne({ id: div._id });
+  if (!division) {
+    return console.log("no such records found");
   }
-  return this.objects.save();
+
+  if (payload.name) {
+    division.name = payload.name;
+  }
+  if (payload.teacherName) {
+    division.teacherName = payload.teacherName;
+  }
+  console.log(division.name + "  " + division.teacherName);
+  return await division.save();
 };
 
-const deleteDivision = payload => {
-  if (payload.id === objects.division.id) {
-    delete this.objects;
+const deleteDivision = async div => {
+  let division = await Division.findOne({ id: div._id });
+  if (!division) {
+    return console.log("no such records found");
   }
+
+  return await division.remove();
 };
 
 module.exports = {
   objects: Division,
   createDivision,
-  getDivision,
+  getDivisions,
+  getADivision,
+  getTeacherName,
   updateDivision,
   deleteDivision
 };
