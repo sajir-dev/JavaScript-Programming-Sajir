@@ -13,8 +13,11 @@ let Student = Schema({
 Student = mongoose.model("students", Student);
 
 const createStudent = async payload => {
-  //pending:remove duplication errors based on class name
+  //pending:return if division not found
   let division = await Division.getADivision(payload.division._id);
+  if (!division) {
+    return console.log("Given division not found");
+  }
   let student = {
     division: division,
     name: payload.name,
@@ -81,6 +84,7 @@ const updateStudent = async (id, payload) => {
     // student.marks.push(payload.marks[i])
   }
   // console.log(payload.marks[0]);
+  student = await student.save();
   console.log(student);
   return student;
 };

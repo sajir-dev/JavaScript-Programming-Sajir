@@ -41,7 +41,8 @@ router.get("/:student_id", async (req, res, next) => {
 router.put("/:student_id", async (req, res, next) => {
   try {
     console.log("inside router put");
-    return await Student.updateStudent(req.params._id, req.body);
+    let response = await Student.updateStudent(req.params._id, req.body);
+    res.send(response);
   } catch (err) {
     console.log(err);
     res.status(400);
@@ -53,7 +54,8 @@ router.put("/:student_id", async (req, res, next) => {
 router.delete("/:student_id", async (req, res, next) => {
   try {
     console.log("inside route delete student");
-    return await Student.deleteStudent(req.params._id);
+    let respnse = await Student.deleteStudent(req.params._id);
+    res.send(respnse);
   } catch (err) {
     console.log(err);
     res.status(400);
