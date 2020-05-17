@@ -1,0 +1,68 @@
+.boxleft {
+    border: 1px solid black;
+    background-color: blanchedalmond;
+    padding: 12px;
+    text-align: center;
+}
+
+.boxright {
+    border: 1px solid black;
+    padding: 12px;
+    text-align: center;
+}
+
+
+input {
+    border: 0px;
+}
+
+textarea {
+    border: 0px
+}
+
+div {
+    vertical-align: middle;
+}
+
+::placeholder {
+    vertical-align: bottom;
+    text-align: center;
+}
+
+button {
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: maroon;
+    color: white;
+}
+
+.remarks {
+    position: relative;
+    bottom: 50px;
+}
+
+.maindiv {
+    display: inline;
+}
+
+.float-left {
+    border: 3px solid yellow;
+    padding:30px;
+    margin: 20px;
+    float: left;
+}
+
+.float-right {
+    border: 3px solid gray;
+    padding: 30px;
+    margin: 20px;
+    float: left;
+}
+
+.float-center {
+    border: 3px solid maroon;
+    padding: 30px;
+    margin: 20px;
+    float: left;
+}
