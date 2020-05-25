@@ -1,0 +1,41 @@
+.wrapper {
+    background-color: #555555;
+    color: wheat;
+    display: flex;
+    justify-content:space-between;
+    padding: 0mm;
+}
+
+.firstset {
+    display: flex;
+    align-items: center;
+}
+
+.secondset {
+    display: flex;
+    align-items: center;
+}
+
+.left-menu {
+    display: flex;
+}
+
+.right-menu {
+    display: flex;
+}
+
+
+ul {
+    list-style-type: none;
+    padding: 0mm;
+    padding-top: 0mm;
+}
+
+li {
+    display: block;
+    padding: .5em;
+}
+
+li:hover {
+    background-color: #111111;
+}

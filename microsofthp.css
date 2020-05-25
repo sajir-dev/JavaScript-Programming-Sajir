@@ -1,0 +1,36 @@
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    display: block;
+    padding: .3em;
+}
+
+
+.topnav {
+    height: 40px;
+    background-color: #999999;
+    display: flex;
+    justify-content: space-between;
+}
+
+.second-topnav {
+    background-color: #999999;
+    display: flex;
+    justify-content: center;
+}
+
+.left-set {
+    display: flex;
+    align-items: center;
+}
+
+.right-set {
+    display: flex;
+    align-items: center;
+    margin:auto 1em
+}
+
+

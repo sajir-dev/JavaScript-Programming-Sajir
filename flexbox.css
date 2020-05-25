@@ -1,0 +1,26 @@
+.wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 0;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.box {
+    height: 100px;
+    flex: 1;
+}
+.one {
+    background-color: tomato;
+}
+
+.two {
+    background-color: teal;
+}
+
+.three {
+    background-color: thistle;
+}
