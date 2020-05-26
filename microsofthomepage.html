@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="microsofthp.css">
-    <title>Document</title>
+    <title>Microsoft Home Docs</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 
 <body>
@@ -15,12 +16,12 @@
                 <!-- <li class="logo"><a href="https://www.microsoft.com/en-in/"><img
                             src="https://pngimg.com/uploads/microsoft/microsoft_PNG10.png"></a></li> -->
                 <li>
-                    <p><strong>Logo</strong></p>
+                    <img src="https://docs.microsoft.com/_themes/docs.theme/master/en-us/_themes/styles/microsoft-logo-light.c77142eb.png" class="logo">
                 </li>
-                <li class="topnav-left-menu-item"><a href="https://docs.microsoft.com/en-us/">Docs</a></li>
-                <li class="topnav-left-menu-item"><a href="https://docs.microsoft.com/en-us/">Documentation</a></li>
-                <li class="topnav-left-menu-item"><a href="https://docs.microsoft.com/en-us/learn/">Learn</a></li>
-                <li class="topnav-left-menu-item"><a href="https://docs.microsoft.com/en-us/answers/products/">Q&A</a>
+                <li class="bold-menu-item"><a href="https://docs.microsoft.com/en-us/">Docs</a></li>
+                <li class="menu-item"><a href="https://docs.microsoft.com/en-us/">Documentation</a></li>
+                <li class="menu-item"><a href="https://docs.microsoft.com/en-us/learn/">Learn</a></li>
+                <li class="menu-item"><a href="https://docs.microsoft.com/en-us/answers/products/">Q&A</a>
                 </li>
                 <li class="topnav-left-menu-item"><a href="https://docs.microsoft.com/en-us/samples/browse/">Code
                         Samples</a></li>
@@ -32,12 +33,12 @@
         </nav>
         <div class="second-topnav">
             <ul class="left-set">
-                <li>
-                    <a href="https://docs.microsoft.com/en-us/azure/?product=featured">Azure</a>
+                <li class="bold-menu-item">
+                    <a href="https://docs.microsoft.com/en-us/azure/?product=featured">   Azure</a>
                 </li>
-                <li>
+                <li class="menu-item">
                     <div class=" dropdown"><span>Product Documentation V</span>
-                        <div class="dropdown-content">
+                        <!-- <div class="dropdown-content">
                             <ul>
                                 <li><a href="https://docs.microsoft.com/en-us/azure/virtual-machines/">Compute</a></li>
                                 <li>
@@ -63,12 +64,12 @@
                                     <a href="https://docs.microsoft.com/en-us/azure/?product=featured">All products</a>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </li>
-                <li>
+                <li class="menu-item">
                     <div class=" dropdown"><span>Architecture V</span>
-                        <div class="dropdown-content">
+                        <!-- <div class="dropdown-content">
                             <ul>
                                 <li>
                                     <a href="https://docs.microsoft.com/en-us/azure/architecture/guide/">Get started</a>
@@ -87,200 +88,233 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                 </li>
             </ul>
-            <div>
-                <ul class="right-set">
-                    <li>
-                                <a href="https://login.microsoftonline.com/">Portal</a>
-                    </li>
-                    <li>
-                                <a href="https://login.microsoftonline.com/">Free Account</a>
-                    </li>
-                    <li>
-                                <a href="https://login.microsoftonline.com/">Bookmark</a>
-                    </li>
-                    <li>
-                                <a href="https://login.microsoftonline.com/">Share</a>
-                    </li>
-                </ul>
-            </div>
+            <ul class="right-set">
+                <li>
+                    <a href="https://login.microsoftonline.com/">Portal</a>
+                </li>
+                <li>
+                    <a href="https://login.microsoftonline.com/">Free Account</a>
+                </li>
+            </ul>
+        </div>
+        <div class="third-nav">
+            <ul class="right-set">
+                <li>
+                    <a href="https://login.microsoftonline.com/">Bookmark</a>
+                </li>
+                <li>
+                    <a href="https://login.microsoftonline.com/">Share</a>
+                </li>
+            </ul>
         </div>
     </header>
     <section>
-        <h1>
-            Azure Documentation
-        </h1>
-        <p>
-            Learn how to build and manage powerful applications using Microsoft Azure cloud services. Get documentation,
-            example code, tutorials, and more.
-        </p>
+        <div class="main-title">
+            <h1>
+                Azure Documentation
+            </h1>
+            <p>
+                Learn how to build and manage powerful applications using Microsoft Azure cloud services. Get documentation,
+                example code, tutorials, and more.
+            </p>
+        </div>
         <div class="main-product-area">
             <div class="main-product-box">
-                <a href="https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide">
-                    <p>Get started for Azure Developers</p>
-                </a>
+                <div class="main-product-box-leftside">
+                    <img src="notepad.png">
+                </div>
+                <div>
+                    <a href="https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide">
+                        <!-- <i class="fas fa-charging-station"></i> -->
+                        <p>Get started</p>
+                        <h4>Get started guide for Azure Developers</h4>
+                    </a>
+                </div>
             </div>
             <div class="main-product-box">
-                <a href="https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide">
-                    <p>Design your app using azure architectue center</p>
-                </a>
+                <div class="main-product-box-leftside">
+                    <img src="ruler.png">
+                </div>
+                <div>
+                    <a href="https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide">
+                        <p>Architecture</p>
+                        <h4>Design your app using azure architectue center</h4>
+                    </a>
+                </div>
             </div>
             <div class="main-product-box">
-                <a href="https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide">
-                    <p>Prepare your org with cloud adoption framework</p>
-                </a>
+                <div class="main-product-box-leftside">
+                    <img src="summary.png">
+                </div>
+                <div>
+                    <a href="https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide">
+                        <p>Overview</p>
+                        <h4>Prepare your org with Cloud Adoption Framework</h4>
+                    </a>
+                </div>
             </div>
             <div class="main-product-box">
-                <a href="https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide">
-                    <p>Build your skills with micrsoft learn</p>
-                </a>
+                <div class="main-product-box-leftside">
+                    <img src="computer.png">
+                </div>
+                <div>
+                    <a href="https://docs.microsoft.com/en-us/azure/guides/developer/azure-developer-guide">
+                        <p>Learn</p>
+                        <h4>Build your skills with Microsoft Learn</h4>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="products-section">
             <h2>Browse Azure Products</h2>
             <div class="all-products">
-                <p>All</p>
-                <p>Featured</p>
-                <p>------------</p>
-                <ul class="all-products-list">
-                    <li>
-                        <p>AI + Machine Learning</p>
-                    </li>
-                    <li>
-                        <p>Analytics</p>
-                    </li>
-                    <li>
-                        <p>Containers</p>
-                    </li>
-                    <li>
-                        <p>Blockchain</p>
-                    </li>
-                    <li>
-                        <p>Databases</p>
-                    </li>
-                    <li>
-                        <p>Compute</p>
-                    </li>
-                    <li>
-                        <p>Developer Tools</p>
-                    </li>
-                    <li>
-                        <p>DevOps</p>
-                    </li>
-                    <li>
-                        <p>Hybrid</p>
-                    </li>
-                    <li>
-                        <p>Identity</p>
-                    </li>
-                    <li>
-                        <p>Integration</p>
-                    </li>
-                    <li>
-                        <p>Internet of Things</p>
-                    </li>
-                    <li>
-                        <p>Management and Governance</p>
-                    </li>
-                    <li>
-                        <p>Media</p>
-                    </li>
-                    <li>
-                        <p>Migration</p>
-                    </li>
-                    <li>
-                        <p>Mixed Reality</p>
-                    </li>
-                    <li>
-                        <p>Mobile</p>
-                    </li>
-                    <li>
-                        <p>Networking</p>
-                    </li>
-                    <li>
-                        <p>Security</p>
-                    </li>
-                    <li>
-                        <p>Storage</p>
-                    </li>
-                    <li>
-                        <p>Web</p>
-                    </li>
-                    <li>
-                        <p>Windows Virtual Desktop</p>
-                    </li>
-                </ul>
-            </div>
-            <div class="all-product-area">
-                <h3 id="product-category">
-                    Category
-                </h3>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
+                <div class="all-products-menu">
+                    <p>All</p>
+                    <p>Featured</p>
+                    <p>------------</p>
+                    <ul class="all-products-list">
+                        <li>
+                            <p>AI + Machine Learning</p>
+                        </li>
+                        <li>
+                            <p>Analytics</p>
+                        </li>
+                        <li>
+                            <p>Containers</p>
+                        </li>
+                        <li>
+                            <p>Blockchain</p>
+                        </li>
+                        <li>
+                            <p>Databases</p>
+                        </li>
+                        <li>
+                            <p>Compute</p>
+                        </li>
+                        <li>
+                            <p>Developer Tools</p>
+                        </li>
+                        <li>
+                            <p>DevOps</p>
+                        </li>
+                        <li>
+                            <p>Hybrid</p>
+                        </li>
+                        <li>
+                            <p>Identity</p>
+                        </li>
+                        <li>
+                            <p>Integration</p>
+                        </li>
+                        <li>
+                            <p>Internet of Things</p>
+                        </li>
+                        <li>
+                            <p>Management and Governance</p>
+                        </li>
+                        <li>
+                            <p>Media</p>
+                        </li>
+                        <li>
+                            <p>Migration</p>
+                        </li>
+                        <li>
+                            <p>Mixed Reality</p>
+                        </li>
+                        <li>
+                            <p>Mobile</p>
+                        </li>
+                        <li>
+                            <p>Networking</p>
+                        </li>
+                        <li>
+                            <p>Security</p>
+                        </li>
+                        <li>
+                            <p>Storage</p>
+                        </li>
+                        <li>
+                            <p>Web</p>
+                        </li>
+                        <li>
+                            <p>Windows Virtual Desktop</p>
+                        </li>
+                    </ul>
                 </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
-                </div>
-                <div class="all-product-box">
-                    <p>icon</p>
-                    <h3>Product name</h3>
-                    <p>Short Description</p>
+                <div class="all-product-area">
+                    <h3 id="product-category">
+                        Category
+                    </h3>
+                    <div class="all-product-box">
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                        <div>
+                            <p>icon</p>
+                            <h3>Product name</h3>
+                            <p>Short Description</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
